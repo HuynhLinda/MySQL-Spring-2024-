@@ -1,0 +1,51 @@
+(Q1)
+select FirstName,LastName,HomePhone,Gender,Region,PostalCode
+From Members
+Where (Gender='F' Or HomePhone='822') and Region='GA';
+
+(Q2)
+select *
+From Tracks
+Where MP3=FALSE
+
+(Q3)
+select TitleID,Title,UPC
+From Titles
+Where UPC Like '%2'
+
+(Q4)
+select ArtistName,WebAddress
+From Artists
+Where WebAddress IS NOT NULL
+
+(Q5)
+select TitleID,TrackNum,TrackTitle
+From Tracks
+Where TrackTitle Like 'Song%'
+
+(Q6)
+select Avg(lengthseconds)/60,Min(lengthseconds)/60,Max(lengthseconds)/60
+From Tracks
+
+(Q7)
+select count(*)
+From Members 
+Where gender='M' and Country='USA'
+
+(Q8)
+select count(*)AS titleID
+From Tracks
+Group BY titleID
+
+(Q9)
+select titleID,sum(lengthseconds/60)
+From Tracks
+Group by TitleID
+
+(Q10)
+select region,gender,count(*)
+from members
+group by region,gender
+order by region
+
+

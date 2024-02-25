@@ -1,0 +1,19 @@
+(Q2)
+select ArtistID,ArtistName,EntryDate,LeadSource
+From Artists
+Where Entrydate < ALL (Select Entrydate 
+From Artists
+Where LeadSource='Directmail')
+
+(Q3)
+select ArtistID,ArtistName,EntryDate,LeadSource
+From Artists
+Where EntryDate<ANY(SELECT EntryDate
+From Artists
+Where LeadSource='Directmail');
+
+(Q4)
+Select ArtistName,EntryDate
+From Artists
+Where EntryDate=(Select Min(EntryDate) 
+From Artists)

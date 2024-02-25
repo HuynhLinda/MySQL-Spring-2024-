@@ -1,0 +1,48 @@
+
+(Q1)
+show databases;
+use lyrics;
+select *
+from Members;
+(Q2)
+show tables;
+describe genre;
+select genre from Genre;
+
+(Q3)
+select Title,UPC,Genre 
+from Titles;
+
+(Q4)
+select *
+From Titles
+Where ArtistID=2;
+
+(Q5)
+select FirstName,LastName,HomePhone,EMail
+From Members;
+
+(Q6)
+select MemberID, Gender
+From Members
+Where Gender = 'M'
+
+(Q7)
+select StudioName, WebAddress,EMail,Phone
+From Studios
+Where City= 'Santa Theresa';
+
+(Q8)
+select *
+From Salespeople
+Where Base > '200';
+
+(Q9)
+select MemberID, Country 
+From Members
+Where Country='Canada';
+
+(Q10)
+select FirstName, LastName, Region, WorkPhone,Email
+From Members
+Where Region='VA'AND (WorkPhone IS NOT NULL or Email IS NOT NULL);
