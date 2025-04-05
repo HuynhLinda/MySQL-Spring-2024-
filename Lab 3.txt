@@ -1,0 +1,46 @@
+1.
+Select StudioName, WebAddress
+From Studios
+Union
+Select ArtistName, WebAddress
+From Artists
+Where WebAddress IS NOT NULL;
+
+2. 
+Select 'F' As 'Gender', Count(*) as Number
+From Members 
+Where Gender='F' 
+UNION
+Select 'M' AS 'M', Count(*) as Number 
+From Members 
+Where Gender='M'
+Union
+Select 'Total' AS 'Gender', Count(*) as Number 
+From Members;
+
+3.
+Insert INTO Artists (ArtistID,ArtistName,City,Region,Country,WebAddress,EntryDate,LeadSource)
+Select 12, 'November', 'New Orleans', 'LA', 'USA', 'www.november.com', '2024-03-30', 'Directmail';
+
+4.
+Insert INTO Tracks(TitleId, TrackNum, Tracktitle, LengthSeconds, MP3, RealAud)
+Select 4, '11', 'Spring', '150', '1','0');
+
+5.
+Update Artists
+Set WebAddress=Concat('www.lyricmusic.com/', ArtistID)
+Where WebAddress IS NULL;
+
+6.
+ANSWER INTO Members2
+Select * From Members; 
+
+7.
+Update Members2
+Set HomePhone
+
+8.
+Delete From Members2
+Where Salespeople
+
+
