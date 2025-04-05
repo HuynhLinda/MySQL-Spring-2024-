@@ -1,0 +1,85 @@
+(Q1)
+select tracktitle,lengthseconds,genre
+From Tracks,Genre
+Where lengthseconds = (Select Max(lengthseconds) From Tracks
+Where Genre ='metal')
+
+(Q2)
+select ArtistID,ArtistName,EntryDate,LeadSource
+From Artists
+Where Entrydate < ALL (Select Entrydate 
+From Artists
+Where LeadSource='Directmail')
+
+(Q3)
+select ArtistID,ArtistName,EntryDate,LeadSource
+From Artists
+Where EntryDate<ANY(SELECT EntryDate
+From Artists
+Where LeadSource='Directmail');
+
+(Q4)
+Select ArtistName,EntryDate
+From Artists
+Where EntryDate=(Select Min(EntryDate) 
+From Artists)
+
+(Q5)
+select tracktitle,genre
+From Tracks,Genre
+Where tracktitle IN( Select tracktitle From Tracks 
+Where Genre='alternative')
+
+(Q6)
+select genre
+From Titles,Genre
+Where genre < ANY (Select genre From Genre Where (incomplete)
+
+(Q7)
+select tracktitle, lengthseconds,genre
+From Tracks,Genre
+(incomplete)
+
+(Q8)
+select tracktitle,lengthseconds
+From Tracks 
+Where lengthseconds=(Select Max(lengthseconds) From Tracks)
+
+Section 2 
+
+(Q9)
+select title,tracktitle
+From Titles INNER JOIN Tracks
+On Titles.titleid=Tracks.titleid
+Where studioID=1
+
+(Q10)
+Select T.title,S.studioname
+From Titles T,Studios S
+Where T.StudioID=S.StudioID
+
+(Q11)
+select S.FirstName,S.LastName
+From Salespeople S,Members M
+Where S.SalesID=M.SalesID And M.LastName='Alvarez'
+
+(Q12)
+select M.FirstName,M.LastName,S.FirstName,S.LastName
+From Members M, Salespeople S
+Where M.SalesID=S.SalesID and M.Region='CA'
+
+(Q13)
+Select artistname,COUNT(Titles.title)
+As NumTitles
+From Artists INNER JOIN Titles
+On Artists.ArtistID=Titles.artistID
+Group By artistname
+Having COUNT(Titles.title)>1
+
+(Q14)
+Select T.Title,R.TrackNum
+From Titles T,Tracks R
+Where (R.TrackNum)<9
+Group By Title,TrackNum
+
+
