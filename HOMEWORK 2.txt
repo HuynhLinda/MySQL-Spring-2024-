@@ -1,0 +1,25 @@
+(Q1)
+select title_id as 'Number', min(price) as 'Min Price', max(price) as 'Max Price', avg(price) as 'Average Sale'
+from titles
+where type='history'
+group by title_id,price
+
+(Q2)
+select count(title_id) as 'Books',avg(pages) as 'Avg # of Pages From P01'
+from titles
+where pub_id='P01'
+
+(Q3)
+select type,count(title_id) as num_of_book, avg(price) as avg_price
+from titles
+group by type
+order by num_of_book 
+
+(Q5)
+select au_id, zip, Right(phone,Length(phone)-4) as 'phone_num'
+from authors
+
+(Q6)
+select concat( left (au_fname, 1),'. ',au_lname) as 'Authors'
+from authors 
+where au_lname != 'Kellsey'
