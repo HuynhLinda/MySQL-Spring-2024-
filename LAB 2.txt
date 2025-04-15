@@ -1,74 +1,91 @@
-(Q1)
+Name: Linda Huynh
+
+SUBQUERIES 
+
+(Q1) List the length of the longest track in the 'metal' genre.
+
 select tracktitle,lengthseconds,genre
 From Tracks,Genre
 Where lengthseconds = (Select Max(lengthseconds) From Tracks
 Where Genre ='metal')
 
-(Q2)
+(Q2) List the artistid, artistname and entrydate of all artists whose entrydate is earlier than everyone who has a 'directmail' leadsource.
+
 select ArtistID,ArtistName,EntryDate,LeadSource
 From Artists
 Where Entrydate < ALL (Select Entrydate 
 From Artists
 Where LeadSource='Directmail')
 
-(Q3)
+(Q3) List the artistid, artistname and entrydate of all artists whose entrydate is earlier than anyone who has a 'directmail' leadsource.
+
 select ArtistID,ArtistName,EntryDate,LeadSource
 From Artists
 Where EntryDate<ANY(SELECT EntryDate
 From Artists
 Where LeadSource='Directmail');
 
-(Q4)
+(Q4) List the artistname and entrydate of the artist with the earliest entry date.
+
 Select ArtistName,EntryDate
 From Artists
 Where EntryDate=(Select Min(EntryDate) 
 From Artists)
 
-(Q5)
+(Q5) List the track titles of all titles in the 'alternative' genre. 
+
 select tracktitle,genre
 From Tracks,Genre
 Where tracktitle IN( Select tracktitle From Tracks 
 Where Genre='alternative')
 
-(Q6)
+(Q6) List all genres from the Genre table that are not represented in the Titles table. 
+
 select genre
 From Titles,Genre
 Where genre < ANY (Select genre From Genre Where (incomplete)
 
-(Q7)
+(Q7) List track titles and lengths of tracks with a length longer than all tracks of the 'metal' genre. (Hint: This requires sub-query within a sub-query)
+
 select tracktitle, lengthseconds,genre
 From Tracks,Genre
 (incomplete)
 
-(Q8)
+(Q8) List the track title with longest length in seconds.
+
 select tracktitle,lengthseconds
 From Tracks 
 Where lengthseconds=(Select Max(lengthseconds) From Tracks)
 
-Section 2 
+Section 2 EQUI JOIN / INNER JOIN
 
-(Q9)
+(Q9)  List the album title and the title of all tracks recorded in StudioID 1
+
 select title,tracktitle
 From Titles INNER JOIN Tracks
 On Titles.titleid=Tracks.titleid
 Where studioID=1
 
-(Q10)
+(Q10) List each title from the Title table along with the name of the studio where it was recorded.
+
 Select T.title,S.studioname
 From Titles T,Studios S
 Where T.StudioID=S.StudioID
 
-(Q11)
+(Q11) Find the name of the sales person who works with the member with last name 'Alvarez'
+
 select S.FirstName,S.LastName
 From Salespeople S,Members M
 Where S.SalesID=M.SalesID And M.LastName='Alvarez'
 
-(Q12)
+(Q12)  List the names of all member(s) from California and the names of the salespeople that they work with.
+
 select M.FirstName,M.LastName,S.FirstName,S.LastName
 From Members M, Salespeople S
 Where M.SalesID=S.SalesID and M.Region='CA'
 
-(Q13)
+(Q13) List the names of all artists who have recorded more than one title and the number of titles they have recorded. 
+
 Select artistname,COUNT(Titles.title)
 As NumTitles
 From Artists INNER JOIN Titles
@@ -76,7 +93,8 @@ On Artists.ArtistID=Titles.artistID
 Group By artistname
 Having COUNT(Titles.title)>1
 
-(Q14)
+(Q14) Report the name of the title and number of tracks for any title with fewer than 9 tracks.
+
 Select T.Title,R.TrackNum
 From Titles T,Tracks R
 Where (R.TrackNum)<9
