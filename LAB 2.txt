@@ -47,9 +47,9 @@ Where genre < ANY (Select genre From Genre Where (incomplete)
 
 (Q7) List track titles and lengths of tracks with a length longer than all tracks of the 'metal' genre. (Hint: This requires sub-query within a sub-query)
 
-select tracktitle, lengthseconds,genre
-From Tracks,Genre
-(incomplete)
+select tracktitle, lengthseconds
+From Tracks
+Where lengthseconds > (Select MAX(lengthseconds)From Track Where TitleID IN (Select TitleID From Titles Where Genre = 'metal'));
 
 (Q8) List the track title with longest length in seconds.
 
