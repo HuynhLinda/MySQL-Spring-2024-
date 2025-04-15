@@ -1,48 +1,60 @@
+Name: Linda Huynh 
 
-(Q1)
+(Q1) List all of the rows and columns in the Members table of the Lyric database. (Members table)
+
 show databases;
 use lyrics;
 select *
 from Members;
-(Q2)
+
+(Q2) List all of the genres in the Lyric database. (Genre table)
+
 show tables;
 describe genre;
 select genre from Genre;
 
-(Q3)
+(Q3) List the Title, UPC and Genre of all album titles. (Titles table)
+
 select Title,UPC,Genre 
 from Titles;
 
-(Q4)
+(Q4) List all of the rows of album titles produced by the artist whose ArtistID is 2. (Titles table)
+
 select *
 From Titles
 Where ArtistID=2;
 
-(Q5)
+(Q5) List the First Name, Last Name, HomePhone and Email address of all members. (Members table)
+
 select FirstName,LastName,HomePhone,EMail
 From Members;
 
-(Q6)
+(Q6)  List the Member ID of all male members. (Members table)
+
 select MemberID, Gender
 From Members
 Where Gender = 'M'
 
-(Q7)
+(Q7) List the StudioName, WebAddress, Email, and Phone of the studio located in the city of "Santa Theresa". (Studios table)
+
 select StudioName, WebAddress,EMail,Phone
 From Studios
 Where City= 'Santa Theresa';
 
-(Q8)
+(Q8) List all of the information about the salesperson that has a base salary greater than 200. (Salespeople table)
+
 select *
 From Salespeople
 Where Base > '200';
 
-(Q9)
+(Q9)  List the Member ID and Country of all members in "Canada". (Members table)
+
 select MemberID, Country 
 From Members
 Where Country='Canada';
 
-(Q10)
+(Q10) List the first name, last name, and region of all members from Virginia who either have a work phone or an email address. (Members Table)
+
 select FirstName, LastName, Region, WorkPhone,Email
 From Members
 Where Region='VA'AND (WorkPhone IS NOT NULL or Email IS NOT NULL);
