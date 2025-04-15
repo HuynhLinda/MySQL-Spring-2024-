@@ -1,48 +1,53 @@
-(Q1)
+(Q1) List the first name, last name, home phone, and gender of all members from Georgia who either have a home phone in area code 822 or are female.
+
 select FirstName,LastName,HomePhone,Gender,Region,PostalCode
 From Members
 Where (Gender='F' Or HomePhone='822') and Region='GA';
 
-(Q2)
+(Q2)  List all the information of tracks that do not have an MP3.
+
 select *
 From Tracks
 Where MP3=FALSE
 
-(Q3)
+(Q3)  List the TitleID, Title, and UPC of any titles whose UPC end with '2'
+
 select TitleID,Title,UPC
 From Titles
 Where UPC Like '%2'
 
-(Q4)
+(Q4) List the artist name and web address of any artists who has a web address. Rename the columns from artistname, webaddress as "Artist Name", and "Web Address".
+
 select ArtistName,WebAddress
 From Artists
 Where WebAddress IS NOT NULL
 
-(Q5)
+(Q5) List the TitleID, TrackNum, and TrackTitle of all tracks whose name starts with "Song" at the beginning of the tracktitle.
+
 select TitleID,TrackNum,TrackTitle
 From Tracks
 Where TrackTitle Like 'Song%'
 
-(Q6)
+(Q6)  Report the average, shortest, and longest track lengths in minutes of all tracks.
 select Avg(lengthseconds)/60,Min(lengthseconds)/60,Max(lengthseconds)/60
 From Tracks
 
-(Q7)
+(Q7) Report the number of male members who are in US.
 select count(*)
 From Members 
 Where gender='M' and Country='USA'
 
-(Q8)
+(Q8) Report the number of tracks for each TitleID
 select count(*)AS titleID
 From Tracks
 Group BY titleID
 
-(Q9)
+(Q9) Report the total time in minutes for each titleid
 select titleID,sum(lengthseconds/60)
 From Tracks
 Group by TitleID
 
-(Q10)
+(Q10)  Report the number of members for each combination of region and gender. Sort the results by the region. DON'T FORGET TO SORT THE RESULTS
 select region,gender,count(*)
 from members
 group by region,gender
