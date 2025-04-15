@@ -1,3 +1,7 @@
+Name: Linda Huynh
+
+AGGREGATION
+
 (Q1)
 select title_id as 'Number', min(price) as 'Min Price', max(price) as 'Max Price', avg(price) as 'Average Sale'
 from titles
@@ -14,6 +18,14 @@ select type,count(title_id) as num_of_book, avg(price) as avg_price
 from titles
 group by type
 order by num_of_book 
+
+FUNCTIONS
+
+(Q4)
+select pub_name
+from publishers
+join titles on publishers.pub_id = titles.pub_id
+where length(titles.title_name) = (select min(length(title_name)) from titles);
 
 (Q5)
 select au_id, zip, Right(phone,Length(phone)-4) as 'phone_num'
