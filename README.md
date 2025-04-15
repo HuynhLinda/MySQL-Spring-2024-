@@ -1,5 +1,4 @@
-I used MYSQL for the programming and Command Prompt to execute the codes.
+MYSQL was used in the first half of my Intro to Relational Databases class 
+I used command prompt to execute my code
+The database I used is the Lyrics Database which is added in the repository
 
-For "Lab 1" this was the first assignment I had to do for the intro class to relational databases.
-For "Homework 1" this was the second assignment I had to do for the intro class to relational databases.
-I used MYSQL for the programming and Command Prompt to execute the codes.
