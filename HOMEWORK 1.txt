@@ -1,3 +1,5 @@
+Name:Linda Huynh 
+
 (Q1) List the first name, last name, home phone, and gender of all members from Georgia who either have a home phone in area code 822 or are female.
 
 select FirstName,LastName,HomePhone,Gender,Region,PostalCode
