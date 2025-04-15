@@ -1,4 +1,7 @@
-1.
+Name: Linda Huynh 
+
+UNION 
+
 Select StudioName, WebAddress
 From Studios
 Union
@@ -17,6 +20,9 @@ Where Gender='M'
 Union
 Select 'Total' AS 'Gender', Count(*) as Number 
 From Members;
+
+
+DATA MANIPULATION
 
 3.
 Insert INTO Artists (ArtistID,ArtistName,City,Region,Country,WebAddress,EntryDate,LeadSource)
